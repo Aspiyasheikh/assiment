@@ -1,0 +1,143 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# Q1.Explain why we have to use the exception class while creating a custom exception.
+# 
+
+# Using the Exception class as a base for custom exceptions in Python ensures consistency, compatibility, and the ability to handle custom exceptions alongside built-in ones. It allows your custom exception to integrate seamlessly with existing exception-handling mechanisms and libraries.
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+
+# Q2: write a python program to print python exceptonn hierachy.
+
+# In[1]:
+
+
+# Print Python Exception Hierarchy
+for exception in Exception.__subclasses__():
+    print(exception.__name__)
+
+
+# Q3: what errors are defined in the arithmeticerror class?explain any two with an example.
+
+# ArithmeticError is the base class for exceptions that occur during arithmetic operations. Two common errors derived from ArithmeticError are:
+# ZeroDivisionError:
+# 
+# Raised when division or modulo operation is performed with a divisor of zero.
+# 
+# Example:
+
+# In[2]:
+
+
+try:
+    result = 10 / 0  # This will raise ZeroDivisionError
+except ZeroDivisionError as e:
+    print(f"Error: {e}")
+
+
+# OverflowError:
+# 
+# Raised when the result of an arithmetic operation exceeds the representational limits of the data type.
+# 
+# Example:
+
+# In[5]:
+
+
+import sys
+
+try:
+    result = sys.maxsize + 1  # This will raise OverflowError on some systems
+except OverflowError as e:
+    print(f"Error: {e}")
+
+
+# Q4:why lookuperror class is used ? explain with an explain keyerror and indexerror.
+
+# The LookupError class in Python is a base class for exceptions that occur when a key or index is not found. Two common exceptions derived from LookupError are:
+
+# In[6]:
+
+
+#KeyError:
+
+#Raised when a dictionary key is not found.
+my_dict = {'a': 1, 'b': 2}
+try:
+    value = my_dict['c']  # This will raise KeyError
+except KeyError as e:
+    print(f"Error: {e}")
+
+
+# In[1]:
+
+
+#IndexError:
+
+#Raised when an index is not found in a sequence (e.g., list, tuple, string).
+my_list = [1, 2, 3]
+try:
+    value = my_list[5]  # This will raise IndexError
+except IndexError as e:
+    print(f"Error: {e}")
+
+
+# Q5:Explain importerror. what is moduleenotfounderror?
+# 
+
+# In[2]:
+
+
+#ImportError:
+
+#Raised when an import statement cannot locate the specified module or when there is an issue with the imported module.
+try:
+    import non_existent_module  # This will raise ImportError
+except ImportError as e:
+    print(f"Error: {e}")
+    
+
+
+# moduleNotFoundError:
+# 
+# A specific subclass of ImportError introduced in Python 3.6.
+# 
+# Raised when an import statement cannot find the specified module.
+# 
+
+# Q6:list down some best practices for exception handling in python.
+
+# Specificity:
+# 
+# Use specific exception types.
+# Avoid Bare Excepts:
+# 
+# Don't use except: without specifying the exception type.
+# Use Try-Except Sparingly:
+# 
+# Limit try-except to potential error points.
+# Cleanup with Finally:
+# 
+# Employ finally for cleanup activities.
+# Log Exceptions:
+# 
+# Log exceptions for debugging.
+# Keep It Simple:
+# 
+# Maintain clear and simple exception handling.
+# Handle Specific Exceptions:
+# 
+# Handle specific exceptions.
+
+# In[ ]:
+
+
+
+
