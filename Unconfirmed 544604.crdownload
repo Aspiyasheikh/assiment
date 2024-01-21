@@ -1,0 +1,154 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# #Q1  what is multithreading in python? hy is it used? Name the module used to handle threads in python
+
+# Multithreading in Python:
+# 
+# Definition: Multithreading is a concurrent execution model where multiple threads within a process share the same resources and run independently.
+# Usage: Used to improve the performance of tasks that can be executed concurrently, making better use of CPU resources.
+# Module: threading module is used to handle threads in Python.
+
+# In[ ]:
+
+
+import threading
+
+def print_numbers():
+    for i in range(5):
+        print(i)
+
+def print_letters():
+    for letter in 'ABCDE':
+        print(letter)
+
+# Create threads
+thread1 = threading.Thread(target=print_numbers)
+thread2 = threading.Thread(target=print_letters)
+
+# Start threads
+thread1.start()
+thread2.start()
+
+# Wait for both threads to finish
+thread1.join()
+thread2.join()
+
+
+# #Q2.why threading module used? rite the use of the following functions
+# #( activeCount
+#  #currentThread
+#  #enumerate)
+
+# Threading Module in Python:
+# 
+# Usage:
+# Enables concurrent execution in Python by creating and managing threads.
+# Useful for parallelizing tasks to improve program performance.
+
+# activeCount:
+# 
+# Use: Counts the number of active Thread objects.
+# Example: active_threads = threading.activeCount()
+# currentThread:
+# 
+# Use: Retrieves the current Thread object.
+# Example: current_thread = threading.currentThread()
+# enumerate:
+# 
+# Use: Lists all currently active Thread objects.
+# Example: all_threads = threading.enumerate()
+
+# Q3.Explain the following functions
+# ( run
+#  start
+#  join
+# ' isAlive)
+
+# run:
+# 
+# Use: Defines the code to be executed by a thread when started using the start method.
+# Example: Override this method in a custom thread class to specify the thread's behavior.
+# start:
+# 
+# Use: Initiates the execution of a thread by calling its run method in a separate thread of control.
+# Example: thread.start() starts the execution of the thread.
+# join:
+# 
+# Use: Waits for the thread to complete its execution before proceeding to the next steps in the program.
+# Example: thread.join() waits for the thread to finish.
+# isAlive:
+# 
+# Use: Checks if the thread is currently executing (alive) or has completed its execution.
+# Example: if thread.isAlive(): checks if the thread is still active.
+
+# Q4.rite a python program to create two threads. Thread one must print the list of squares and thread
+# two must print the list of cubes
+
+# In[5]:
+
+
+import threading
+
+def print_squares():
+    for i in range(1, 6):
+        print(f"Thread 1 - Square of {i}: {i**2}")
+
+def print_cubes():
+    for i in range(1, 6):
+        print(f"Thread 2 - Cube of {i}: {i**3}")
+
+# Create threads
+thread1 = threading.Thread(target=print_squares)
+thread2 = threading.Thread(target=print_cubes)
+
+# Start threads
+thread1.start()
+thread2.start()
+
+# Wait for both threads to finish
+thread1.join()
+thread2.join()
+
+
+# Q5.State advantages and disadvantages of multithreading
+
+# 
+# Advantages of Multithreading:
+# 
+# Improved Performance
+# Responsiveness
+# Resource Sharing
+# Parallelism
+# 
+# 
+# Disadvantages of Multithreading:
+# 
+# Complexity
+# Concurrency Issues
+# Difficulty in Debugging
+# Potential for Thread Interference
+# 
+# 
+# 
+# 
+# 
+
+# Q6. Explain deadlocks and race conditions.
+
+# Deadlocks:
+# 
+# Threads are blocked indefinitely.
+# Caused by circular waiting for resources.
+# Results from improper resource allocation or locking.
+# Race Conditions:
+# 
+# Unpredictable outcomes.
+# Caused by unsynchronized access to shared data.
+# Requires proper synchronization mechanisms to avoid.
+
+# In[ ]:
+
+
+
+
