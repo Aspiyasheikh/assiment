@@ -1,0 +1,126 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# Q1:Q1. What is multiprocessing in python? Why is it useful?
+
+#  Multiprocessing is a concurrent execution model in Python that involves the simultaneous execution of multiple processes.
+#  
+#  
+# Usefulness:
+#     
+# Utilizes multiple CPU cores, enhancing performance.
+# Effective for CPU-bound tasks that benefit from parallel processing.
+# Overcomes Global Interpreter Lock (GIL) limitations, allowing true parallelism.
+
+# Q2: What are the differences between multiprocessing and multithreading?
+
+# Multiprocessing:
+# 
+# Involves multiple processes.
+# Utilizes multiple CPU cores.
+# Avoids Global Interpreter Lock (GIL).
+# Separate memory spaces.
+# 
+# Multithreading:
+# 
+# Involves multiple threads within a process.
+# Shares the same CPU core.
+# Subject to Global Interpreter Lock (GIL).
+# Shares the same memory space.
+# 
+# 
+# 
+# 
+# 
+# 
+
+# Q3: Write a python code to create a process using the multiprocessing module.
+# 
+
+# In[4]:
+
+
+import multiprocessing
+
+def print_numbers():
+    for i in range(1, 6):
+        print(f"Process - Square of {i}: {i**2}")
+
+if __name__ == "__main__":
+    # Create a multiprocessing process
+    process = multiprocessing.Process(target=print_numbers)
+
+    # Start the process
+    process.start()
+
+    # Wait for the process to finish
+    process.join()
+
+
+# Q4. What is a multiprocessing pool in python? Why is it used?
+
+# Multiprocessing Pool in Python:
+# 
+# Definition: A multiprocessing pool is a mechanism provided by the multiprocessing module to manage a pool of worker processes for parallel execution of tasks.
+# 
+# 
+# Usage:
+# Distributes tasks among multiple processes in the pool.
+# Efficiently utilizes available CPU cores for parallel processing.
+# Particularly useful for parallelizing tasks that can be independently performed.
+
+# Q5: How can we create a pool of worker processes in python using the multiprocessing module?
+
+# In[ ]:
+
+
+import multiprocessing
+
+def square(number):
+    return number ** 2
+
+if __name__ == "__main__":
+    # Create a multiprocessing pool with 3 worker processes
+    with multiprocessing.Pool(processes=3) as pool:
+        # Map the square function to a list of numbers
+        numbers = [1, 2, 3, 4, 5]
+        results = pool.map(square, numbers)
+
+    print(results)
+
+
+# Q6. Write a python program to create 4 processes, each process should print a different number using the
+# multiprocessing module in python.
+
+# In[2]:
+
+
+import multiprocessing
+
+def print_number(number):
+    print(f"Process {number}: {number}")
+
+if __name__ == "__main__":
+    # Create 4 processes
+    processes = []
+    for i in range(1, 5):
+        process = multiprocessing.Process(target=print_number, args=(i,))
+        processes.append(process)
+        process.start()
+
+    # Wait for all processes to finish
+    for process in processes:
+        process.join()
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
